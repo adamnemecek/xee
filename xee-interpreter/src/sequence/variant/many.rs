@@ -16,7 +16,7 @@ impl Many {}
 
 impl From<Vec<Item>> for Many {
     fn from(items: Vec<Item>) -> Self {
-        Many {
+        Self {
             items: items.into(),
         }
     }

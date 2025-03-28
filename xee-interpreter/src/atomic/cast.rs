@@ -241,7 +241,7 @@ impl FromStr for Parsed<bool> {
     type Err = error::Error;
 
     fn from_str(s: &str) -> Result<Self, Self::Err> {
-        Ok(Parsed(atomic::Atomic::parse_boolean(s)?))
+        Ok(Self(atomic::Atomic::parse_boolean(s)?))
     }
 }
 

@@ -95,7 +95,7 @@ where
     fn from(atomic: T) -> Self {
         let atomic: atomic::Atomic = atomic.into();
         let item: Item = atomic.into();
-        Sequence::One(item.into())
+        Self::One(item.into())
     }
 }
 
@@ -109,7 +109,7 @@ where
             let item: Item = value.into();
             items.push(item);
         }
-        Sequence::new(items)
+        Self::new(items)
     }
 }
 

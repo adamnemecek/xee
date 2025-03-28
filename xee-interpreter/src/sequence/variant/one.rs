@@ -24,7 +24,7 @@ impl One {
 
 impl From<Item> for One {
     fn from(item: Item) -> Self {
-        One { item }
+        Self { item }
     }
 }
 

@@ -442,7 +442,7 @@ impl TryFrom<Atomic> for bool {
 
 impl From<Decimal> for Atomic {
     fn from(d: Decimal) -> Self {
-        Atomic::Decimal(d.into())
+        Self::Decimal(d.into())
     }
 }
 
@@ -565,7 +565,7 @@ impl TryFrom<Atomic> for i32 {
 impl From<i16> for Atomic {
     fn from(i: i16) -> Self {
         let i: IBig = i.into();
-        Atomic::Integer(IntegerType::Short, i.into())
+        Self::Integer(IntegerType::Short, i.into())
     }
 }
 
@@ -583,7 +583,7 @@ impl TryFrom<Atomic> for i16 {
 impl From<i8> for Atomic {
     fn from(i: i8) -> Self {
         let i: IBig = i.into();
-        Atomic::Integer(IntegerType::Byte, i.into())
+        Self::Integer(IntegerType::Byte, i.into())
     }
 }
 
@@ -601,7 +601,7 @@ impl TryFrom<Atomic> for i8 {
 impl From<u64> for Atomic {
     fn from(i: u64) -> Self {
         let i: IBig = i.into();
-        Atomic::Integer(IntegerType::UnsignedLong, i.into())
+        Self::Integer(IntegerType::UnsignedLong, i.into())
     }
 }
 
@@ -619,7 +619,7 @@ impl TryFrom<Atomic> for u64 {
 impl From<u32> for Atomic {
     fn from(i: u32) -> Self {
         let i: IBig = i.into();
-        Atomic::Integer(IntegerType::UnsignedInt, i.into())
+        Self::Integer(IntegerType::UnsignedInt, i.into())
     }
 }
 
@@ -637,7 +637,7 @@ impl TryFrom<Atomic> for u32 {
 impl From<u16> for Atomic {
     fn from(i: u16) -> Self {
         let i: IBig = i.into();
-        Atomic::Integer(IntegerType::UnsignedShort, i.into())
+        Self::Integer(IntegerType::UnsignedShort, i.into())
     }
 }
 
@@ -655,7 +655,7 @@ impl TryFrom<Atomic> for u16 {
 impl From<u8> for Atomic {
     fn from(i: u8) -> Self {
         let i: IBig = i.into();
-        Atomic::Integer(IntegerType::UnsignedByte, i.into())
+        Self::Integer(IntegerType::UnsignedByte, i.into())
     }
 }
 
@@ -674,13 +674,13 @@ impl TryFrom<Atomic> for u8 {
 
 impl From<f32> for Atomic {
     fn from(f: f32) -> Self {
-        Atomic::Float(OrderedFloat(f))
+        Self::Float(OrderedFloat(f))
     }
 }
 
 impl From<OrderedFloat<f32>> for Atomic {
     fn from(f: OrderedFloat<f32>) -> Self {
-        Atomic::Float(f)
+        Self::Float(f)
     }
 }
 
@@ -702,13 +702,13 @@ impl TryFrom<Atomic> for f32 {
 
 impl From<f64> for Atomic {
     fn from(f: f64) -> Self {
-        Atomic::Double(OrderedFloat(f))
+        Self::Double(OrderedFloat(f))
     }
 }
 
 impl From<OrderedFloat<f64>> for Atomic {
     fn from(f: OrderedFloat<f64>) -> Self {
-        Atomic::Double(f)
+        Self::Double(f)
     }
 }
 
@@ -731,7 +731,7 @@ impl TryFrom<Atomic> for f64 {
 
 impl From<Name> for Atomic {
     fn from(n: Name) -> Self {
-        Atomic::QName(n.into())
+        Self::QName(n.into())
     }
 }
 

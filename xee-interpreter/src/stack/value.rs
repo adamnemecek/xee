@@ -48,6 +48,6 @@ where
 {
     fn from(t: T) -> Self {
         let sequence: sequence::Sequence = t.into();
-        Value::Sequence(sequence)
+        Self::Sequence(sequence)
     }
 }

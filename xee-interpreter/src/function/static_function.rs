@@ -132,12 +132,12 @@ pub enum FunctionRule {
 impl From<FunctionKind> for FunctionRule {
     fn from(function_kind: FunctionKind) -> Self {
         match function_kind {
-            FunctionKind::ItemFirst => FunctionRule::ItemFirst,
-            FunctionKind::ItemLast => FunctionRule::ItemLast,
-            FunctionKind::ItemLastOptional => FunctionRule::ItemLastOptional,
-            FunctionKind::Position => FunctionRule::PositionFirst,
-            FunctionKind::Size => FunctionRule::SizeFirst,
-            FunctionKind::Collation => FunctionRule::Collation,
+            FunctionKind::ItemFirst => Self::ItemFirst,
+            FunctionKind::ItemLast => Self::ItemLast,
+            FunctionKind::ItemLastOptional => Self::ItemLastOptional,
+            FunctionKind::Position => Self::PositionFirst,
+            FunctionKind::Size => Self::SizeFirst,
+            FunctionKind::Collation => Self::Collation,
         }
     }
 }

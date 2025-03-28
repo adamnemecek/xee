@@ -471,7 +471,7 @@ impl FromStr for Parsed<Decimal> {
     type Err = error::Error;
 
     fn from_str(s: &str) -> Result<Self, Self::Err> {
-        Ok(Parsed(atomic::Atomic::parse_decimal(s)?))
+        Ok(Self(atomic::Atomic::parse_decimal(s)?))
     }
 }
 
@@ -479,7 +479,7 @@ impl FromStr for Parsed<IBig> {
     type Err = error::Error;
 
     fn from_str(s: &str) -> Result<Self, Self::Err> {
-        Ok(Parsed(s.parse().map_err(|_| error::Error::FOCA0003)?))
+        Ok(Self(s.parse().map_err(|_| error::Error::FOCA0003)?))
     }
 }
 
@@ -487,7 +487,7 @@ impl FromStr for Parsed<i64> {
     type Err = error::Error;
 
     fn from_str(s: &str) -> Result<Self, Self::Err> {
-        Ok(Parsed(atomic::Atomic::parse_integer_number(s)?))
+        Ok(Self(atomic::Atomic::parse_integer_number(s)?))
     }
 }
 
@@ -495,7 +495,7 @@ impl FromStr for Parsed<i32> {
     type Err = error::Error;
 
     fn from_str(s: &str) -> Result<Self, Self::Err> {
-        Ok(Parsed(atomic::Atomic::parse_integer_number(s)?))
+        Ok(Self(atomic::Atomic::parse_integer_number(s)?))
     }
 }
 
@@ -503,7 +503,7 @@ impl FromStr for Parsed<i16> {
     type Err = error::Error;
 
     fn from_str(s: &str) -> Result<Self, Self::Err> {
-        Ok(Parsed(atomic::Atomic::parse_integer_number(s)?))
+        Ok(Self(atomic::Atomic::parse_integer_number(s)?))
     }
 }
 
@@ -511,7 +511,7 @@ impl FromStr for Parsed<i8> {
     type Err = error::Error;
 
     fn from_str(s: &str) -> Result<Self, Self::Err> {
-        Ok(Parsed(atomic::Atomic::parse_integer_number(s)?))
+        Ok(Self(atomic::Atomic::parse_integer_number(s)?))
     }
 }
 
@@ -519,7 +519,7 @@ impl FromStr for Parsed<u64> {
     type Err = error::Error;
 
     fn from_str(s: &str) -> Result<Self, Self::Err> {
-        Ok(Parsed(atomic::Atomic::parse_integer_number(s)?))
+        Ok(Self(atomic::Atomic::parse_integer_number(s)?))
     }
 }
 
@@ -527,7 +527,7 @@ impl FromStr for Parsed<u32> {
     type Err = error::Error;
 
     fn from_str(s: &str) -> Result<Self, Self::Err> {
-        Ok(Parsed(atomic::Atomic::parse_integer_number(s)?))
+        Ok(Self(atomic::Atomic::parse_integer_number(s)?))
     }
 }
 
@@ -535,7 +535,7 @@ impl FromStr for Parsed<u16> {
     type Err = error::Error;
 
     fn from_str(s: &str) -> Result<Self, Self::Err> {
-        Ok(Parsed(atomic::Atomic::parse_integer_number(s)?))
+        Ok(Self(atomic::Atomic::parse_integer_number(s)?))
     }
 }
 
@@ -543,7 +543,7 @@ impl FromStr for Parsed<u8> {
     type Err = error::Error;
 
     fn from_str(s: &str) -> Result<Self, Self::Err> {
-        Ok(Parsed(atomic::Atomic::parse_integer_number(s)?))
+        Ok(Self(atomic::Atomic::parse_integer_number(s)?))
     }
 }
 
@@ -551,7 +551,7 @@ impl FromStr for Parsed<f64> {
     type Err = error::Error;
 
     fn from_str(s: &str) -> Result<Self, Self::Err> {
-        Ok(Parsed(atomic::Atomic::parse_double(s)?))
+        Ok(Self(atomic::Atomic::parse_double(s)?))
     }
 }
 
@@ -559,7 +559,7 @@ impl FromStr for Parsed<f32> {
     type Err = error::Error;
 
     fn from_str(s: &str) -> Result<Self, Self::Err> {
-        Ok(Parsed(atomic::Atomic::parse_float(s)?))
+        Ok(Self(atomic::Atomic::parse_float(s)?))
     }
 }
 

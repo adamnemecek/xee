@@ -236,7 +236,7 @@ pub struct Accumulator {
 
 impl From<Accumulator> for Declaration {
     fn from(i: Accumulator) -> Self {
-        Declaration::Accumulator(Box::new(i))
+        Self::Accumulator(Box::new(i))
     }
 }
 
@@ -389,7 +389,7 @@ pub struct AttributeSet {
 
 impl From<AttributeSet> for OverrideContent {
     fn from(i: AttributeSet) -> Self {
-        OverrideContent::AttributeSet(Box::new(i))
+        Self::AttributeSet(Box::new(i))
     }
 }
 
@@ -728,7 +728,7 @@ pub struct Function {
 
 impl From<Function> for OverrideContent {
     fn from(i: Function) -> Self {
-        OverrideContent::Function(Box::new(i))
+        Self::Function(Box::new(i))
     }
 }
 
@@ -1518,13 +1518,13 @@ pub enum ModeValue {
 
 impl From<Template> for OverrideContent {
     fn from(t: Template) -> Self {
-        OverrideContent::Template(Box::new(t))
+        Self::Template(Box::new(t))
     }
 }
 
 impl From<Template> for Declaration {
     fn from(t: Template) -> Self {
-        Declaration::Template(Box::new(t))
+        Self::Template(Box::new(t))
     }
 }
 
@@ -1652,7 +1652,7 @@ impl From<Variable> for SequenceConstructorItem {
 
 impl From<Variable> for OverrideContent {
     fn from(v: Variable) -> Self {
-        OverrideContent::Variable(Box::new(v))
+        Self::Variable(Box::new(v))
     }
 }
 
@@ -1758,7 +1758,7 @@ pub enum SequenceConstructorInstruction {
 
 impl From<SequenceConstructorInstruction> for SequenceConstructorItem {
     fn from(i: SequenceConstructorInstruction) -> Self {
-        SequenceConstructorItem::Instruction(i)
+        Self::Instruction(i)
     }
 }
 
@@ -1775,7 +1775,7 @@ pub struct ElementNode {
 
 impl From<ElementNode> for SequenceConstructorItem {
     fn from(e: ElementNode) -> Self {
-        SequenceConstructorItem::Content(Content::Element(Box::new(e)))
+        Self::Content(Content::Element(Box::new(e)))
     }
 }
 

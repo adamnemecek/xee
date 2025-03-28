@@ -31,7 +31,7 @@ pub(crate) struct CollatorQuery {
 
 impl From<CollatorQuery> for collator::CollatorOptions {
     fn from(query: CollatorQuery) -> Self {
-        let mut options = collator::CollatorOptions::new();
+        let mut options = Self::new();
         options.strength = Some(query.strength);
         options.alternate_handling = Some(query.alternate);
         options.case_first = Some(query.case_first);
@@ -137,7 +137,7 @@ impl CollatorQuery {
             return Err(error::Error::FOCH0002);
         }
 
-        Ok(CollatorQuery {
+        Ok(Self {
             fallback,
             lang: lang.map(|s| s.to_string()),
             strength: unwrap_or_fail(strength, Strength::Tertiary, fallback)?,
