@@ -597,9 +597,7 @@ where
 impl<'a> chumsky::error::Error<'a, &'a str> for ParserError {
     fn merge(self, other: Self) -> Self {
         match (self, other) {
-            (ParserError::ExpectedFound { .. }, a) => a,
-            (a, ParserError::ExpectedFound { .. }) => a,
-            (a, _) => a,
+            (Self::ExpectedFound { .. }, a) | (a, Self::ExpectedFound { .. }) | (a, _) => a,
         }
     }
 }

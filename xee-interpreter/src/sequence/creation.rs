@@ -26,10 +26,12 @@ impl Sequence {
     pub fn concat(self, other: Self) -> error::Result<Self> {
         Ok(match (self, other) {
             (Self::Empty(_), Self::Empty(_)) => Self::Empty(Empty {}),
-            (Self::Empty(_), Self::One(item)) => Self::One(item),
-            (Self::One(item), Self::Empty(_)) => Self::One(item),
-            (Self::Empty(_), Self::Many(items)) => Self::Many(items),
-            (Self::Many(items), Self::Empty(_)) => Self::Many(items),
+            (Self::Empty(_), Self::One(item)) | (Self::One(item), Self::Empty(_)) => {
+                Self::One(item)
+            }
+            (Self::Empty(_), Self::Many(items)) | (Self::Many(items), Self::Empty(_)) => {
+                Self::Many(items)
+            }
             (Self::One(item1), Self::One(item2)) => {
                 Self::Many((vec![item1.into_item(), item2.into_item()]).into())
             }
