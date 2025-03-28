@@ -115,17 +115,13 @@ pub enum ExcludeResultPrefixes {
 impl ExcludeResultPrefixes {
     // TODO: This combine isn't good enough; it should take existing prefixes
     // into account, which we do have on context
-    pub(crate) fn combine(&self, other: ExcludeResultPrefixes) -> Self {
+    pub(crate) fn combine(&self, other: Self) -> Self {
         match (self, other) {
-            (ExcludeResultPrefixes::All, _) => ExcludeResultPrefixes::All,
-            (_, ExcludeResultPrefixes::All) => ExcludeResultPrefixes::All,
-            (
-                ExcludeResultPrefixes::Prefixes(prefixes),
-                ExcludeResultPrefixes::Prefixes(other_prefixes),
-            ) => {
+            (Self::All, _) | (_, Self::All) => Self::All,
+            (Self::Prefixes(prefixes), Self::Prefixes(other_prefixes)) => {
                 let mut prefixes = prefixes.clone();
                 prefixes.extend(other_prefixes);
-                ExcludeResultPrefixes::Prefixes(prefixes)
+                Self::Prefixes(prefixes)
             }
         }
     }

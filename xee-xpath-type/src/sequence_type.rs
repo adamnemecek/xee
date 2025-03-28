@@ -302,11 +302,11 @@ impl TypeInfo for ast::ElementOrAttributeTest {
             // is either element(An) or element(An, T) or element(An, T?)
             // for any type T.
             (
-                ast::ElementOrAttributeTest {
+                Self {
                     name_or_wildcard: ast::NameOrWildcard::Name(a_name),
                     ..
                 },
-                ast::ElementOrAttributeTest {
+                Self {
                     name_or_wildcard: ast::NameOrWildcard::Name(b_name),
                     type_name:
                         None
@@ -320,7 +320,7 @@ impl TypeInfo for ast::ElementOrAttributeTest {
             // expanded QName of Bn, Ai is element(An, At), and
             // derives-from(At, Bt) returns true.
             (
-                ast::ElementOrAttributeTest {
+                Self {
                     name_or_wildcard: ast::NameOrWildcard::Name(a_name),
                     type_name:
                         Some(ast::TypeName {
@@ -328,7 +328,7 @@ impl TypeInfo for ast::ElementOrAttributeTest {
                             can_be_nilled: false,
                         }),
                 },
-                ast::ElementOrAttributeTest {
+                Self {
                     name_or_wildcard: ast::NameOrWildcard::Name(b_name),
                     type_name:
                         Some(ast::TypeName {
@@ -341,14 +341,14 @@ impl TypeInfo for ast::ElementOrAttributeTest {
             // expanded QName of Bn, Ai is either element(An, At) or
             // element(An, At?), and derives-from(At, Bt) returns true.
             (
-                ast::ElementOrAttributeTest {
+                Self {
                     name_or_wildcard: ast::NameOrWildcard::Name(a_name),
                     type_name:
                         Some(ast::TypeName {
                             name: a_type_name, ..
                         }),
                 },
-                ast::ElementOrAttributeTest {
+                Self {
                     name_or_wildcard: ast::NameOrWildcard::Name(b_name),
                     type_name:
                         Some(ast::TypeName {
@@ -361,7 +361,7 @@ impl TypeInfo for ast::ElementOrAttributeTest {
             // element(N, At) for any name N, and derives-from(At, Bt) returns
             // true.
             (
-                ast::ElementOrAttributeTest {
+                Self {
                     type_name:
                         Some(ast::TypeName {
                             name: a_type_name,
@@ -369,7 +369,7 @@ impl TypeInfo for ast::ElementOrAttributeTest {
                         }),
                     ..
                 },
-                ast::ElementOrAttributeTest {
+                Self {
                     name_or_wildcard: ast::NameOrWildcard::Wildcard,
                     type_name:
                         Some(ast::TypeName {
@@ -382,14 +382,14 @@ impl TypeInfo for ast::ElementOrAttributeTest {
             // element(*, At?), element(N, At), or element(N, At?) for any name
             // N, and derives-from(At, Bt) returns true.
             (
-                ast::ElementOrAttributeTest {
+                Self {
                     type_name:
                         Some(ast::TypeName {
                             name: a_type_name, ..
                         }),
                     ..
                 },
-                ast::ElementOrAttributeTest {
+                Self {
                     name_or_wildcard: ast::NameOrWildcard::Wildcard,
                     type_name:
                         Some(ast::TypeName {
