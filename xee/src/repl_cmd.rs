@@ -32,11 +32,7 @@ impl ArgumentDefinition {
 
 impl CommandDefinitions {
     pub(crate) fn new(defitions: Vec<CommandDefinition>) -> Self {
-        let mut definitions = Self {
-            definitions: vec![],
-            by_name: HashMap::default(),
-            by_short_name: HashMap::default(),
-        };
+        let mut definitions = Self::default();
         for definition in defitions {
             definitions.add(definition);
         }

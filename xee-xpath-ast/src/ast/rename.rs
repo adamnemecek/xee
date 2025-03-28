@@ -1,19 +1,18 @@
-use ahash::{HashSet, HashSetExt};
+use ahash::HashSet;
 
 use crate::Name;
 use crate::{ast, span::WithSpan, VariableNames};
 
 use super::visitor::AstVisitor;
 
+#[derive(Default)]
 struct UniqueNameGenerator {
     names: HashSet<Name>,
 }
 
 impl UniqueNameGenerator {
     fn new() -> Self {
-        Self {
-            names: HashSet::new(),
-        }
+        Self::default()
     }
 
     fn generate(&mut self, name: &Name) -> Name {
@@ -26,6 +25,7 @@ impl UniqueNameGenerator {
     }
 }
 
+#[derive(Default)]
 struct Names {
     names: Vec<(Name, Name)>,
     generator: UniqueNameGenerator,
@@ -33,10 +33,7 @@ struct Names {
 
 impl Names {
     fn new() -> Self {
-        Self {
-            names: vec![],
-            generator: UniqueNameGenerator::new(),
-        }
+        Self::default()
     }
 
     fn get(&mut self, name: &Name) -> Name {
@@ -62,15 +59,14 @@ impl Names {
     }
 }
 
+#[derive(Default)]
 struct Renamer {
     names: Names,
 }
 
 impl Renamer {
     fn new() -> Self {
-        Self {
-            names: Names::new(),
-        }
+        Self::default()
     }
 
     fn push_name(&mut self, name: &Name) -> Name {

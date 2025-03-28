@@ -70,7 +70,7 @@ impl MapKey {
             }
             Atomic::Double(OrderedFloat(f)) => {
                 if f.is_nan() {
-                    Ok(MapKey::NaN)
+                    Ok(Self::NaN)
                 } else if f.is_infinite() {
                     if f.is_sign_positive() {
                         Ok(Self::PositiveInfinity)
