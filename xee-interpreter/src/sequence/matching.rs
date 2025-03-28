@@ -322,15 +322,15 @@ impl Item {
 
     fn kind_test_matching(&self, kind_test: &ast::KindTest, xot: &Xot) -> error::Result<()> {
         match self {
-            Item::Node(node) => {
+            Self::Node(node) => {
                 if xml::kind_test(kind_test, xot, *node) {
                     Ok(())
                 } else {
                     Err(error::Error::XPTY0004)
                 }
             }
-            Item::Atomic(_) => Err(error::Error::XPTY0004),
-            Item::Function(_) => Err(error::Error::XPTY0004),
+            Self::Atomic(_) |
+            Self::Function(_) => Err(error::Error::XPTY0004),
         }
     }
 

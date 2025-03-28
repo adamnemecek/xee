@@ -9,7 +9,7 @@ use icu::{
     locid::Locale,
 };
 
-use iri_string::types::{IriAbsoluteStr, IriReferenceStr, IriStr, IriString};
+use iri_string::types::{IriAbsoluteStr, IriReferenceStr, IriStr};
 
 use crate::error;
 
@@ -177,25 +177,23 @@ pub enum Collation {
 impl Collation {
     fn new(base_uri: Option<&IriAbsoluteStr>, uri: &IriReferenceStr) -> error::Result<Self> {
         let uri = if let Some(base_uri) = base_uri {
-            let uri: IriString = uri.resolve_against(base_uri).into();
-            uri
+             uri.resolve_against(base_uri).into()
         } else {
-            let uri: IriString = uri.to_iri().map_err(|_| error::Error::FOCH0002)?.to_owned();
-            uri
+            uri.to_iri().map_err(|_| error::Error::FOCH0002)?.to_owned()
         };
         if uri.scheme_str() != "http" || uri.authority_str() != Some("www.w3.org") {
             return Err(error::Error::FOCH0002);
         }
         let path = uri.path_str();
         Ok(match path {
-            "/2005/xpath-functions/collation/codepoint" => Collation::CodePoint,
+            "/2005/xpath-functions/collation/codepoint" => Self::CodePoint,
             "/2013/collation/UCA" => {
                 let collator_query = CollatorQuery::from_url(&uri)?;
-                Collation::Uca(Box::new(Self::uca_collator(collator_query)?))
+                Self::Uca(Box::new(Self::uca_collator(collator_query)?))
             }
-            "/2005/xpath-functions/collation/html-ascii-case-insensitive" => Collation::HtmlAscii,
+            "/2005/xpath-functions/collation/html-ascii-case-insensitive" => Self::HtmlAscii,
             // TODO: a bit of a hack, we support the qt3 caseblind collation too so that the test suite will work
-            "/2010/09/qt-fots-catalog/collation/caseblind" => Collation::HtmlAscii,
+            "/2010/09/qt-fots-catalog/collation/caseblind" => Self::HtmlAscii,
             _ => return Err(error::Error::FOCH0002),
         })
     }
@@ -227,9 +225,9 @@ impl Collation {
 
     pub(crate) fn compare(&self, a: &str, b: &str) -> Ordering {
         match self {
-            Collation::CodePoint => a.cmp(b),
-            Collation::Uca(collator) => collator.compare(a, b),
-            Collation::HtmlAscii => a.to_ascii_lowercase().cmp(&b.to_ascii_lowercase()),
+            Self::CodePoint => a.cmp(b),
+            Self::Uca(collator) => collator.compare(a, b),
+            Self::HtmlAscii => a.to_ascii_lowercase().cmp(&b.to_ascii_lowercase()),
         }
     }
 }

@@ -74,10 +74,10 @@ enum Commands {
 impl Commands {
     fn path(&self) -> &Path {
         match self {
-            Commands::Initialize { path } => path,
-            Commands::Check { path } => path,
-            Commands::Update { path } => path,
-            Commands::All { path, .. } => path,
+            Self::Initialize { path } |
+            Self::Check { path } |
+            Self::Update { path } |
+            Self::All { path, .. } => path,
         }
     }
 }

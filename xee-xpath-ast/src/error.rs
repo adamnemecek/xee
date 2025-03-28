@@ -19,11 +19,11 @@ pub enum ParserError {
 impl ParserError {
     pub fn span(&self) -> Span {
         match self {
-            Self::ExpectedFound { span, .. } => *span,
-            Self::UnknownPrefix { span, .. } => *span,
-            Self::Reserved { span, .. } => *span,
-            Self::ArityOverflow { span } => *span,
-            Self::UnknownType { span, .. } => *span,
+            Self::ExpectedFound { span, .. } |
+            Self::UnknownPrefix { span, .. } |
+            Self::Reserved { span, .. } |
+            Self::ArityOverflow { span } |
+            Self::UnknownType { span, .. } |
             Self::IllegalFunctionInPattern { span, .. } => *span,
         }
     }
@@ -31,11 +31,11 @@ impl ParserError {
     pub fn adjust(mut self, start: usize) -> Self {
         use ParserError::*;
         let span = match &mut self {
-            ExpectedFound { span } => span,
-            UnknownPrefix { span, .. } => span,
-            Reserved { span, .. } => span,
-            ArityOverflow { span } => span,
-            UnknownType { span, .. } => span,
+            ExpectedFound { span } |
+            UnknownPrefix { span, .. } |
+            Reserved { span, .. } |
+            ArityOverflow { span } |
+            UnknownType { span, .. } |
             IllegalFunctionInPattern { span, .. } => span,
         };
         *span = Span::new(span.start + start, span.end + start);
