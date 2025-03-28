@@ -20,7 +20,7 @@ impl Program {
     pub fn new(static_context: context::StaticContext, span: Span) -> Self {
         Self {
             span,
-            functions: Vec::new(),
+            functions: vec![],
             declarations: Declarations::new(),
             static_context,
             map_signature: function::Signature::map_signature(),

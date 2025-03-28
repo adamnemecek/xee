@@ -119,7 +119,7 @@ fn text_value_template(
     span: Span,
     parser_context: &XPathParserContext,
 ) -> Result<Vec<ast::SequenceConstructorItem>, ElementError> {
-    let mut items = Vec::new();
+    let mut items = vec![];
     for token in ValueTemplateTokenizer::new(s, span, parser_context) {
         let token = token?;
         let content = match token {

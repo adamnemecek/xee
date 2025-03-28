@@ -122,7 +122,7 @@ impl EnvironmentSpec {
     ) -> Result<HashMap<String, Sequence>> {
         let mut collections = HashMap::new();
         for collection in &self.collections {
-            let mut items: Vec<Item> = Vec::new();
+            let mut items: Vec<Item> = vec![];
             // right now we only load <source> but we should in the future
             // potential also load <query>. Right now the test suite doesn't
             // exercise this.
@@ -234,8 +234,8 @@ impl ContextLoadable<Path> for EnvironmentSpec {
             let collection = Collection {
                 uri,
                 sources,
-                queries: Vec::new(),
-                resources: Vec::new(),
+                queries: vec![],
+                resources: vec![],
             };
 
             Ok(collection)

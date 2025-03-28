@@ -121,7 +121,7 @@ impl InstructionParser for ast::Declaration {
 
 impl InstructionParser for ast::ElementNode {
     fn parse(content: &Content, attributes: &Attributes) -> Result<ast::ElementNode> {
-        let mut element_attributes = Vec::new();
+        let mut element_attributes = vec![];
         for key in content.state.xot.attributes(content.node).keys() {
             let name = content.state.xot.name_ref(key, content.node)?;
             // if any name is in the xsl namespace, we skip it

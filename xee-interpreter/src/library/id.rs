@@ -53,7 +53,7 @@ fn ids_helper(
     annotations: &xml::Annotations,
 ) -> Result<Vec<Node>, Error> {
     let document_node = xot.root(node);
-    let mut result: Vec<Node> = Vec::new();
+    let mut result: Vec<Node> = vec![];
     let mut seen = HashSet::new();
     for idrefs in arg {
         let idrefs = idrefs?;

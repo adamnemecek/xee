@@ -155,7 +155,7 @@ fn find_helper(
     input: &sequence::Sequence,
     key: atomic::MapKey,
 ) -> error::Result<Vec<sequence::Sequence>> {
-    let mut result: Vec<sequence::Sequence> = Vec::new();
+    let mut result: Vec<sequence::Sequence> = vec![];
     for item in input.iter() {
         if let sequence::Item::Function(function) = item {
             match function {

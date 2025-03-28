@@ -37,13 +37,13 @@ impl<'a> FunctionBuilder<'a> {
     pub fn new(program: &'a mut interpreter::Program) -> Self {
         Self {
             program,
-            compiled: Vec::new(),
-            spans: Vec::new(),
-            constants: Vec::new(),
-            steps: Vec::new(),
-            cast_types: Vec::new(),
-            sequence_types: Vec::new(),
-            closure_names: Vec::new(),
+            compiled: vec![],
+            spans: vec![],
+            constants: vec![],
+            steps: vec![],
+            cast_types: vec![],
+            sequence_types: vec![],
+            closure_names: vec![],
         }
     }
 

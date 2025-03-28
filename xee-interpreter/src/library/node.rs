@@ -118,7 +118,7 @@ fn innermost(
         }
     }
     // now find all nodes that are not in ancestors
-    let mut innermost = Vec::new();
+    let mut innermost = vec![];
     for node in nodes {
         if !ancestors.contains(&node) {
             innermost.push(node);
@@ -135,7 +135,7 @@ fn outermost(
     let nodes: Vec<xot::Node> = nodes.collect::<error::Result<_>>()?;
     let node_set = nodes.iter().collect::<HashSet<_>>();
     // now find all nodes that don't have an ancestor in the set
-    let mut outermost = Vec::new();
+    let mut outermost = vec![];
     'outer: for node in nodes.iter() {
         let mut parent_node = *node;
         // if we find an ancestor in node_set, then we don't add this node

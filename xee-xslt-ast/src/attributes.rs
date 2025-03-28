@@ -110,7 +110,7 @@ impl<'a> Attributes<'a> {
     }
 
     pub(crate) fn unseen_attributes(&self) -> Vec<NameId> {
-        let mut result = Vec::new();
+        let mut result = vec![];
         let seen = self.seen.borrow();
         for name in self.content.state.xot.attributes(self.content.node).keys() {
             if !seen.contains(&name) {
@@ -157,7 +157,7 @@ impl<'a> Attributes<'a> {
         let parser_context = self.content.parser_context();
         move |s, span| {
             let iter = ValueTemplateTokenizer::new(s, span, &parser_context);
-            let mut tokens = Vec::new();
+            let mut tokens = vec![];
             for t in iter {
                 let t = t?;
                 tokens.push(t.into());
@@ -312,7 +312,7 @@ impl<'a> Attributes<'a> {
     }
 
     fn _eqnames(&self, s: &str, span: Span) -> Result<Vec<xpath_ast::Name>, AttributeError> {
-        let mut result = Vec::new();
+        let mut result = vec![];
         for (s, span) in split_whitespace_with_spans(s, span) {
             result.push(self._eqname(s, span)?);
         }
@@ -326,7 +326,7 @@ impl<'a> Attributes<'a> {
     }
 
     fn _modes(&self, s: &str, span: Span) -> Result<Vec<ast::ModeValue>, AttributeError> {
-        let mut result = Vec::new();
+        let mut result = vec![];
         for (s, span) in split_whitespace_with_spans(s, span) {
             match s {
                 "#default" => match &self.content.context.default_mode {
@@ -402,7 +402,7 @@ impl<'a> Attributes<'a> {
     }
 
     fn _tokens(s: &str, span: Span) -> Result<Vec<ast::Token>, AttributeError> {
-        let mut result = Vec::new();
+        let mut result = vec![];
         for s in s.split_whitespace() {
             result.push(Self::_token(s, span)?);
         }
@@ -425,7 +425,7 @@ impl<'a> Attributes<'a> {
     }
 
     fn _uris(s: &str, span: Span) -> Result<Vec<ast::Uri>, AttributeError> {
-        let mut result = Vec::new();
+        let mut result = vec![];
         for s in s.split_whitespace() {
             result.push(Self::_uri(s, span)?);
         }
@@ -509,7 +509,7 @@ impl<'a> Attributes<'a> {
     }
 
     fn _prefixes(s: &str, span: Span) -> Result<Vec<ast::Prefix>, AttributeError> {
-        let mut result = Vec::new();
+        let mut result = vec![];
         for s in s.split_whitespace() {
             result.push(Self::_prefix(s, span)?);
         }
@@ -540,7 +540,7 @@ impl<'a> Attributes<'a> {
         if s == "#all" {
             Ok(ast::ExcludeResultPrefixes::All)
         } else {
-            let mut prefixes = Vec::new();
+            let mut prefixes = vec![];
             for s in s.split_whitespace() {
                 prefixes.push(Self::_exclude_result_prefix(s, span)?);
             }

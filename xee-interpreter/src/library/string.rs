@@ -53,7 +53,7 @@ fn string_to_codepoints(arg: Option<&str>) -> error::Result<Vec<IBig>> {
         Ok(arg.chars().map(|c| c as u32).map(IBig::from).collect())
     } else {
         // empty sequence
-        Ok(Vec::new())
+        Ok(vec![])
     }
 }
 
@@ -317,7 +317,7 @@ fn tokenize1(input: Option<&str>) -> error::Result<Vec<String>> {
             .map(|s| s.to_string())
             .collect())
     } else {
-        Ok(Vec::new())
+        Ok(vec![])
     }
 }
 

@@ -30,9 +30,7 @@ impl Bindings {
     }
 
     pub fn empty() -> Self {
-        Self {
-            bindings: Vec::new(),
-        }
+        Self { bindings: vec![] }
     }
 
     /// Create an atom

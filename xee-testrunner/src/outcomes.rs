@@ -85,7 +85,7 @@ impl TestSetOutcomes {
     pub(crate) fn new(test_set_name: &str) -> Self {
         Self {
             test_set_name: test_set_name.to_string(),
-            outcomes: Vec::new(),
+            outcomes: vec![],
             filtered: 0,
             unsupported: 0,
         }
@@ -137,9 +137,7 @@ pub struct CatalogOutcomes {
 
 impl CatalogOutcomes {
     pub(crate) fn new() -> Self {
-        Self {
-            outcomes: Vec::new(),
-        }
+        Self { outcomes: vec![] }
     }
 
     pub(crate) fn add_outcomes(&mut self, test_set_outcomes: TestSetOutcomes) {

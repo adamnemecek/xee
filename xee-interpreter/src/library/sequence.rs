@@ -121,7 +121,7 @@ fn reverse(arg: &sequence::Sequence) -> sequence::Sequence {
 #[xpath_fn("fn:subsequence($sourceSeq as item()*, $startingLoc as xs:double) as item()*")]
 fn subsequence2(source_seq: &sequence::Sequence, starting_loc: f64) -> Vec<sequence::Item> {
     if starting_loc.is_nan() {
-        return Vec::new();
+        return vec![];
     }
     let starting_loc = starting_loc - 1.0;
     let starting_loc = starting_loc.clamp(0.0, (source_seq.len()) as f64);
@@ -142,7 +142,7 @@ fn subsequence3(
     let length = length.round();
     let end = starting_loc + length;
     if end.is_nan() {
-        return Vec::new();
+        return vec![];
     }
     let starting_loc = starting_loc.clamp(0.0, (source_seq.len()) as f64);
     let end = end.clamp(starting_loc, (source_seq.len()) as f64);
@@ -182,7 +182,7 @@ fn distinct_values(
         .map(|(i, atom)| Ok((atom?, i)))
         .collect::<error::Result<HashMap<_, _>>>()?;
     if distinct_set.is_empty() {
-        return Ok(Vec::new());
+        return Ok(vec![]);
     }
 
     // now we sort the distinct set by the order
@@ -195,7 +195,7 @@ fn distinct_values(
 
     // now we use an exhaustive, and expensive, deep-equal check to filter out
     // more duplicates
-    let mut distinct = Vec::new();
+    let mut distinct = vec![];
     'outer: for atom in distinct_values {
         for seen in &distinct {
             if atom.deep_equal(seen, &collation, default_offset) {
@@ -218,7 +218,7 @@ fn index_of(
         .static_context()
         .resolve_collation_str(Some(collation))?;
     let default_offset = context.implicit_timezone();
-    let mut indices = Vec::new();
+    let mut indices = vec![];
     for (i, atom) in seq.enumerate() {
         if atom?.equal(&search, &collation, default_offset) {
             indices.push((i + 1).into());

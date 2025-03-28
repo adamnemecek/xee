@@ -25,7 +25,7 @@ impl Variables {
         Self {
             counter: 0,
             variables: HashMap::new(),
-            context_scope: Vec::new(),
+            context_scope: vec![],
         }
     }
 

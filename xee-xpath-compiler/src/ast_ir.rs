@@ -40,7 +40,7 @@ impl<'a> IrConverter<'a> {
     pub fn xpath(&mut self, ast: &ast::XPath) -> error::SpannedResult<Bindings> {
         let context_names = self.variables.push_context();
         // define any external variable names
-        let mut ir_names = Vec::new();
+        let mut ir_names = vec![];
         for name in self.static_context.variable_names() {
             ir_names.push(self.variables.new_var_name(name));
         }

@@ -163,7 +163,7 @@ impl ExcludedNamesFilter {
         &mut self,
         catalog_outcomes: &CatalogOutcomes,
     ) -> Vec<UpdateResult> {
-        let mut update_results = Vec::new();
+        let mut update_results = vec![];
         for test_set_outcomes in catalog_outcomes.outcomes.iter() {
             update_results.push(self.update_with_test_set_outcomes(test_set_outcomes));
         }

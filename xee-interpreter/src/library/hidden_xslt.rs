@@ -44,7 +44,7 @@ fn simple_content_text_nodes(
     // Note: to avoid having to create xot nodes on the fly, we actually
     // turn adjecent text nodes into atomic string nodes, which should be
     // fine.
-    let mut r: Vec<sequence::Item> = Vec::new();
+    let mut r: Vec<sequence::Item> = vec![];
     let mut last_text: Option<String> = None;
     for item in arg.iter() {
         if let sequence::Item::Node(node) = item {

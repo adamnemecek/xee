@@ -145,7 +145,7 @@ impl Source {
             let metadata = metadata_query.execute(session, item)?;
             // we can return multiple sources if both role and uri are set
             // we flatten it later
-            let mut sources = Vec::new();
+            let mut sources = vec![];
             if let Some(role) = role {
                 if role == "." {
                     sources.push(Source {

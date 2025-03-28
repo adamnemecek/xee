@@ -26,7 +26,7 @@ mod xs;
 use crate::function::StaticFunctionDescription;
 
 pub(crate) fn static_function_descriptions() -> Vec<StaticFunctionDescription> {
-    let mut descriptions = Vec::new();
+    let mut descriptions = vec![];
     descriptions.extend(fn_::static_function_descriptions());
     descriptions.extend(string::static_function_descriptions());
     descriptions.extend(xs::static_function_descriptions());

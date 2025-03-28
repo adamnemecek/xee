@@ -23,12 +23,12 @@ fn preprocess(xot: &mut Xot, top: Node) -> Result<(), Error> {
         namespace == xsl_ns
     };
 
-    let mut to_remove = Vec::new();
-    let mut to_remove_attribute = Vec::new();
-    let mut non_shadow_names = Vec::new();
-    let mut shadow_attributes = Vec::new();
+    let mut to_remove = vec![];
+    let mut to_remove_attribute = vec![];
+    let mut non_shadow_names = vec![];
+    let mut shadow_attributes = vec![];
 
-    let mut stack = Vec::new();
+    let mut stack = vec![];
 
     for edge in xot.traverse(top) {
         match edge {

@@ -25,7 +25,7 @@ mod kw {
 
 impl Parse for XPathFnOptions {
     fn parse(input: ParseStream) -> Result<Self> {
-        let mut options = Vec::new();
+        let mut options = vec![];
         while !input.is_empty() {
             options.push(input.parse()?);
             if !input.is_empty() {

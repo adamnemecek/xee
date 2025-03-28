@@ -90,7 +90,7 @@ impl Documents {
         Self {
             id: get_documents_id(),
             annotations: Annotations::new(),
-            documents: Vec::new(),
+            documents: vec![],
             by_uri: HashMap::new(),
             uri_by_document_node: HashMap::new(),
         }

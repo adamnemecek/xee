@@ -348,9 +348,9 @@ pub struct Declarations {
 impl Declarations {
     pub fn new(main: FunctionDefinition) -> Self {
         Self {
-            rules: Vec::new(),
+            rules: vec![],
             modes: HashMap::new(),
-            functions: Vec::new(),
+            functions: vec![],
             main,
         }
     }

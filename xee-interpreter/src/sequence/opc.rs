@@ -109,7 +109,7 @@ impl<'a> OptionParameterConverter<'a> {
                 .map(|item| item.to_atomic()?.try_into())
                 .collect::<Result<Vec<V>, _>>()?
         } else {
-            Vec::new()
+            vec![]
         };
         Ok(values)
     }

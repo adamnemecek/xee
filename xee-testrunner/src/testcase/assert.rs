@@ -45,7 +45,7 @@ impl AssertAnyOf {
     }
 
     pub(crate) fn assert_error(&self, error: &error::ErrorValue) -> TestOutcome {
-        let mut failed_test_results = Vec::new();
+        let mut failed_test_results = vec![];
         for test_case_result in &self.0 {
             if let TestCaseResult::AssertError(assert_error) = test_case_result {
                 let result = assert_error.assert_error(error);
@@ -69,7 +69,7 @@ impl Assertable for AssertAnyOf {
         documents: &mut Documents,
         result: &error::ValueResult<Sequence>,
     ) -> TestOutcome {
-        let mut failed_test_results = Vec::new();
+        let mut failed_test_results = vec![];
         for test_case_result in &self.0 {
             let result = test_case_result.assert_result(context, documents, result);
             match result {

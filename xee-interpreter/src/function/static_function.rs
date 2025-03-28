@@ -267,7 +267,7 @@ impl StaticFunctions {
     pub(crate) fn new() -> Self {
         let mut by_name = HashMap::new();
         let descriptions = static_function_descriptions();
-        let mut by_index = Vec::new();
+        let mut by_index = vec![];
         for description in descriptions {
             by_index.extend(description.functions());
         }

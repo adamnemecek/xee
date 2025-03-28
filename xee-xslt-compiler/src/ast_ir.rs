@@ -476,7 +476,7 @@ impl<'a> IrConverter<'a> {
         &mut self,
         value_template: &ast::ValueTemplate<String>,
     ) -> error::SpannedResult<Bindings> {
-        let mut all_bindings = Vec::new();
+        let mut all_bindings = vec![];
         for item in &value_template.template {
             let bindings = match item {
                 ast::ValueTemplateItem::String { text, span: _span } => {
@@ -516,7 +516,7 @@ impl<'a> IrConverter<'a> {
             // if we have multiple bindings, concatenate each result into
             // a single string
             let mut combined_bindings = Bindings::empty();
-            let mut atoms = Vec::new();
+            let mut atoms = vec![];
             for binding in all_bindings {
                 let (atom, binding) = binding.atom_bindings();
                 combined_bindings = combined_bindings.concat(binding);

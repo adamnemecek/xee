@@ -13,7 +13,7 @@ pub struct Step {
 }
 
 pub(crate) fn resolve_step(step: &Step, node: xot::Node, xot: &Xot) -> sequence::Sequence {
-    let mut new_items = Vec::new();
+    let mut new_items = vec![];
     for axis_node in node_take_axis(&step.axis, xot, node) {
         if node_test(&step.node_test, &step.axis, xot, axis_node) {
             new_items.push(sequence::Item::Node(axis_node));

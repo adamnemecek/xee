@@ -30,7 +30,7 @@ impl PredicateMatcher for Interpreter<'_> {
         // TODO: extract 'call_function_id_with_arguments' that is used also by
         // apply_templates_sequence. call it with context, position and length,
         // again see apply_templates_sequence
-        let function = function::InlineFunctionData::new(inline_function_id, Vec::new()).into();
+        let function = function::InlineFunctionData::new(inline_function_id, vec![]).into();
         let arguments = if let Item::Node(node) = item {
             if let Some(parent) = self.xot().parent(*node) {
                 let position = self.xot().child_index(parent, *node).unwrap() + 1;
@@ -65,9 +65,7 @@ impl PredicateMatcher for Interpreter<'_> {
 
 impl<V: Clone> PatternLookup<V> {
     pub(crate) fn new() -> Self {
-        Self {
-            patterns: Vec::new(),
-        }
+        Self { patterns: vec![] }
     }
 
     pub(crate) fn add_rules(&mut self, rules: Vec<(Pattern<function::InlineFunctionId>, V)>) {

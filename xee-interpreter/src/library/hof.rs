@@ -84,7 +84,7 @@ fn filter(
     seq: &sequence::Sequence,
     predicate: sequence::Item,
 ) -> error::Result<sequence::Sequence> {
-    let mut result: Vec<sequence::Item> = Vec::new();
+    let mut result: Vec<sequence::Item> = vec![];
     let function = predicate.to_function()?;
 
     for item in seq.iter() {

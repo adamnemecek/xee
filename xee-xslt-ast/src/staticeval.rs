@@ -40,8 +40,8 @@ impl StaticEvaluator {
         Self {
             static_global_variables: Variables::new(),
             static_parameters,
-            to_remove: Vec::new(),
-            to_remove_attribute: Vec::new(),
+            to_remove: vec![],
+            to_remove_attribute: vec![],
         }
     }
 

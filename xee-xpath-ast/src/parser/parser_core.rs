@@ -288,7 +288,7 @@ where
             .map_with(|(primary, postfixes), extra| {
                 // in case of a placeholder argument list we need to
                 // wrap the existing primary
-                let mut normal_postfixes = Vec::new();
+                let mut normal_postfixes = vec![];
                 let mut primary = primary;
                 for postfix in postfixes {
                     match postfix {
@@ -959,8 +959,8 @@ fn placeholder_arguments(
     aps: &[ArgumentOrPlaceholder],
 ) -> (Vec<ast::ExprSingleS>, Vec<ast::Param>) {
     let mut placeholder_index = 0;
-    let mut arguments = Vec::new();
-    let mut params = Vec::new();
+    let mut arguments = vec![];
+    let mut params = vec![];
     for argument_or_placeholder in aps.iter() {
         match argument_or_placeholder {
             ArgumentOrPlaceholder::Argument(expr) => {

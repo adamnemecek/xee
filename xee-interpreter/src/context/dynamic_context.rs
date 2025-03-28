@@ -125,7 +125,7 @@ impl<'a> DynamicContext<'a> {
     }
 
     pub(crate) fn arguments(&self) -> Result<Vec<sequence::Sequence>, Error> {
-        let mut arguments = Vec::new();
+        let mut arguments = vec![];
         for variable_name in self.static_context().variable_names() {
             let items = self.variables.get(variable_name).ok_or(Error::XPDY0002)?;
             arguments.push(items.clone());

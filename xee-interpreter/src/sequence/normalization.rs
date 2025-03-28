@@ -25,7 +25,7 @@ pub(crate) fn normalize(
         Sequence::from(vec![atom])
     };
     // 2. and 3.
-    let mut items: Vec<NodeOrString> = Vec::new();
+    let mut items: Vec<NodeOrString> = vec![];
     for item in sequence.iter() {
         match item {
             Item::Atomic(atomic) => {
@@ -47,7 +47,7 @@ pub(crate) fn normalize(
     }
 
     // 4 and 5.
-    let mut flattened_nodes = Vec::new();
+    let mut flattened_nodes = vec![];
     for item in items {
         match item {
             NodeOrString::Node(node) => {
@@ -71,7 +71,7 @@ pub(crate) fn normalize(
     }
 
     // 6. and part of 7
-    let mut nodes = Vec::new();
+    let mut nodes = vec![];
     for node in flattened_nodes {
         match xot.value(node) {
             xot::Value::Text(text) => {

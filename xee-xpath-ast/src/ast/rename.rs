@@ -34,7 +34,7 @@ struct Names {
 impl Names {
     fn new() -> Self {
         Self {
-            names: Vec::new(),
+            names: vec![],
             generator: UniqueNameGenerator::new(),
         }
     }

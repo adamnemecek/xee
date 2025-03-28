@@ -276,7 +276,7 @@ where
         state: &State,
         context: &Context,
     ) -> Result<(Vec<V>, Option<Node>)> {
-        let mut result = Vec::new();
+        let mut result = vec![];
         let mut current_node = node;
         loop {
             match self.parser.parse_next(current_node, state, context) {

@@ -5,7 +5,7 @@ pub(crate) struct Scope<N: Eq + Clone> {
 
 impl<N: Eq + Clone> Scope<N> {
     fn new() -> Self {
-        Self { names: Vec::new() }
+        Self { names: vec![] }
     }
 
     fn get(&self, name: &N) -> Option<usize> {

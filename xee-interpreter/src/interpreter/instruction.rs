@@ -295,7 +295,7 @@ pub(crate) fn decode_instruction(bytes: &[u8]) -> (Instruction, usize) {
 }
 
 pub fn decode_instructions(bytes: &[u8]) -> Vec<Instruction> {
-    let mut instructions = Vec::new();
+    let mut instructions = vec![];
     let mut ip = 0;
     while ip < bytes.len() {
         let (instruction, instruction_size) = decode_instruction(&bytes[ip..]);

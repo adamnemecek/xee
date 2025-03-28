@@ -118,7 +118,7 @@ impl Dependencies {
     #[cfg(test)]
     pub(crate) fn empty() -> Self {
         Self {
-            dependencies: Vec::new(),
+            dependencies: vec![],
         }
     }
     // the spec is supported if any of the spec dependencies is supported

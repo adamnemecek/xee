@@ -58,7 +58,7 @@ impl BuildStackEntry {
     fn new() -> Self {
         Self {
             item: ItemBuildStackEntry {
-                build_stack: Vec::new(),
+                build_stack: vec![],
             },
         }
     }

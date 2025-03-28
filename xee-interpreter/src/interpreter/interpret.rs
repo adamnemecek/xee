@@ -896,7 +896,7 @@ impl<'a> Interpreter<'a> {
         let keys = key_specifier
             .atomized(self.state.xot())
             .collect::<error::Result<Vec<_>>>()?;
-        let mut result = Vec::new();
+        let mut result = vec![];
         for key in keys {
             for item in get_key(&data, key)?.iter() {
                 result.push(item.clone());
@@ -910,7 +910,7 @@ impl<'a> Interpreter<'a> {
         let function: function::Function = value.try_into()?;
         let value = match function {
             function::Function::Map(map) => {
-                let mut result = Vec::new();
+                let mut result = vec![];
                 for key in map.keys() {
                     for value in self.lookup_map(&map, key.clone().into())? {
                         result.push(value)
@@ -919,7 +919,7 @@ impl<'a> Interpreter<'a> {
                 result
             }
             function::Function::Array(array) => {
-                let mut result = Vec::new();
+                let mut result = vec![];
                 for i in 1..(array.len() + 1) {
                     let i: IBig = i.into();
                     for value in self.lookup_array(&array, i.into())? {
@@ -1081,7 +1081,7 @@ impl<'a> Interpreter<'a> {
         parent_node: xot::Node,
         value: sequence::Sequence,
     ) -> error::Result<()> {
-        let mut string_values = Vec::new();
+        let mut string_values = vec![];
         for item in value.iter() {
             match item {
                 sequence::Item::Node(node) => {
@@ -1153,7 +1153,7 @@ impl<'a> Interpreter<'a> {
         mode: pattern::ModeId,
         sequence: sequence::Sequence,
     ) -> error::Result<sequence::Sequence> {
-        let mut r: Vec<sequence::Item> = Vec::new();
+        let mut r: Vec<sequence::Item> = vec![];
         let size: IBig = sequence.len().into();
 
         for (i, item) in sequence.iter().enumerate() {
@@ -1183,7 +1183,7 @@ impl<'a> Interpreter<'a> {
                 atomic::Atomic::from(position).into(),
                 atomic::Atomic::from(size.clone()).into(),
             ];
-            let function = function::InlineFunctionData::new(function_id, Vec::new()).into();
+            let function = function::InlineFunctionData::new(function_id, vec![]).into();
             self.call_function_with_arguments(&function, &arguments)
                 .map(Some)
         } else {

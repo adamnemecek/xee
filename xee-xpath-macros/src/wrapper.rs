@@ -62,8 +62,8 @@ fn make_wrapper(
     ast: &ItemFn,
     signature: &Signature,
 ) -> syn::Result<proc_macro2::TokenStream> {
-    let mut conversions = Vec::new();
-    let mut conversion_names = Vec::new();
+    let mut conversions = vec![];
+    let mut conversion_names = vec![];
     let mut adjust = 0;
     let context_ident = get_argument_ident(ast, adjust, "context")?;
     if let Some(context_ident) = context_ident {
