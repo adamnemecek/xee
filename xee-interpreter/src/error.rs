@@ -743,7 +743,7 @@ impl Error {
 
     pub fn code(&self) -> String {
         match self {
-            Error::Application(application_error) => {
+            Self::Application(application_error) => {
                 application_error.qname.local_name().to_string()
             }
             _ => self.to_string(),
@@ -752,7 +752,7 @@ impl Error {
 
     pub fn code_qname(&self) -> xot::xmlname::OwnedName {
         match self {
-            Error::Application(application_error) => application_error.qname.clone(),
+            Self::Application(application_error) => application_error.qname.clone(),
             _ => xot::xmlname::OwnedName::new(
                 self.code(),
                 "http://www.w3.org/2005/xqt-errors".to_string(),

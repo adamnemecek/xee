@@ -16,102 +16,48 @@ impl SequenceConstructorName {
         attributes: &Attributes,
     ) -> Result<ast::SequenceConstructorItem, ElementError> {
         match self {
-            SequenceConstructorName::ApplyImports => {
-                ast::ApplyImports::parse_sequence_constructor_item(attributes)
-            }
-            SequenceConstructorName::AnalyzeString => {
-                ast::AnalyzeString::parse_sequence_constructor_item(attributes)
-            }
-            SequenceConstructorName::ApplyTemplates => {
+            Self::ApplyImports => ast::ApplyImports::parse_sequence_constructor_item(attributes),
+            Self::AnalyzeString => ast::AnalyzeString::parse_sequence_constructor_item(attributes),
+            Self::ApplyTemplates => {
                 ast::ApplyTemplates::parse_sequence_constructor_item(attributes)
             }
-            SequenceConstructorName::Assert => {
-                ast::Assert::parse_sequence_constructor_item(attributes)
-            }
-            SequenceConstructorName::Attribute => {
-                ast::Attribute::parse_sequence_constructor_item(attributes)
-            }
-            SequenceConstructorName::Break => {
-                ast::Break::parse_sequence_constructor_item(attributes)
-            }
-            SequenceConstructorName::CallTemplate => {
-                ast::CallTemplate::parse_sequence_constructor_item(attributes)
-            }
-            SequenceConstructorName::Choose => {
-                ast::Choose::parse_sequence_constructor_item(attributes)
-            }
-            SequenceConstructorName::Comment => {
-                ast::Comment::parse_sequence_constructor_item(attributes)
-            }
-            SequenceConstructorName::Copy => ast::Copy::parse_sequence_constructor_item(attributes),
-            SequenceConstructorName::CopyOf => {
-                ast::CopyOf::parse_sequence_constructor_item(attributes)
-            }
-            SequenceConstructorName::Document => {
-                ast::Document::parse_sequence_constructor_item(attributes)
-            }
-            SequenceConstructorName::Element => {
-                ast::Element::parse_sequence_constructor_item(attributes)
-            }
-            SequenceConstructorName::Evaluate => {
-                ast::Evaluate::parse_sequence_constructor_item(attributes)
-            }
-            SequenceConstructorName::Fallback => {
-                ast::Fallback::parse_sequence_constructor_item(attributes)
-            }
-            SequenceConstructorName::ForEach => {
-                ast::ForEach::parse_sequence_constructor_item(attributes)
-            }
-            SequenceConstructorName::ForEachGroup => {
-                ast::ForEachGroup::parse_sequence_constructor_item(attributes)
-            }
-            SequenceConstructorName::Fork => ast::Fork::parse_sequence_constructor_item(attributes),
-            SequenceConstructorName::If => ast::If::parse_sequence_constructor_item(attributes),
-            SequenceConstructorName::Map => ast::Map::parse_sequence_constructor_item(attributes),
-            SequenceConstructorName::MapEntry => {
-                ast::MapEntry::parse_sequence_constructor_item(attributes)
-            }
-            SequenceConstructorName::Merge => {
-                ast::Merge::parse_sequence_constructor_item(attributes)
-            }
-            SequenceConstructorName::Message => {
-                ast::Message::parse_sequence_constructor_item(attributes)
-            }
-            SequenceConstructorName::Namespace => {
-                ast::Namespace::parse_sequence_constructor_item(attributes)
-            }
-            SequenceConstructorName::NextIteration => {
-                ast::NextIteration::parse_sequence_constructor_item(attributes)
-            }
-            SequenceConstructorName::NextMatch => {
-                ast::NextMatch::parse_sequence_constructor_item(attributes)
-            }
-            SequenceConstructorName::Number => {
-                ast::Number::parse_sequence_constructor_item(attributes)
-            }
-            SequenceConstructorName::OnEmpty => {
-                ast::OnEmpty::parse_sequence_constructor_item(attributes)
-            }
-            SequenceConstructorName::OnNonEmpty => {
-                ast::OnNonEmpty::parse_sequence_constructor_item(attributes)
-            }
-            SequenceConstructorName::ProcessingInstruction => {
+            Self::Assert => ast::Assert::parse_sequence_constructor_item(attributes),
+            Self::Attribute => ast::Attribute::parse_sequence_constructor_item(attributes),
+            Self::Break => ast::Break::parse_sequence_constructor_item(attributes),
+            Self::CallTemplate => ast::CallTemplate::parse_sequence_constructor_item(attributes),
+            Self::Choose => ast::Choose::parse_sequence_constructor_item(attributes),
+            Self::Comment => ast::Comment::parse_sequence_constructor_item(attributes),
+            Self::Copy => ast::Copy::parse_sequence_constructor_item(attributes),
+            Self::CopyOf => ast::CopyOf::parse_sequence_constructor_item(attributes),
+            Self::Document => ast::Document::parse_sequence_constructor_item(attributes),
+            Self::Element => ast::Element::parse_sequence_constructor_item(attributes),
+            Self::Evaluate => ast::Evaluate::parse_sequence_constructor_item(attributes),
+            Self::Fallback => ast::Fallback::parse_sequence_constructor_item(attributes),
+            Self::ForEach => ast::ForEach::parse_sequence_constructor_item(attributes),
+            Self::ForEachGroup => ast::ForEachGroup::parse_sequence_constructor_item(attributes),
+            Self::Fork => ast::Fork::parse_sequence_constructor_item(attributes),
+            Self::If => ast::If::parse_sequence_constructor_item(attributes),
+            Self::Map => ast::Map::parse_sequence_constructor_item(attributes),
+            Self::MapEntry => ast::MapEntry::parse_sequence_constructor_item(attributes),
+            Self::Merge => ast::Merge::parse_sequence_constructor_item(attributes),
+            Self::Message => ast::Message::parse_sequence_constructor_item(attributes),
+            Self::Namespace => ast::Namespace::parse_sequence_constructor_item(attributes),
+            Self::NextIteration => ast::NextIteration::parse_sequence_constructor_item(attributes),
+            Self::NextMatch => ast::NextMatch::parse_sequence_constructor_item(attributes),
+            Self::Number => ast::Number::parse_sequence_constructor_item(attributes),
+            Self::OnEmpty => ast::OnEmpty::parse_sequence_constructor_item(attributes),
+            Self::OnNonEmpty => ast::OnNonEmpty::parse_sequence_constructor_item(attributes),
+            Self::ProcessingInstruction => {
                 ast::ProcessingInstruction::parse_sequence_constructor_item(attributes)
             }
-            SequenceConstructorName::Sequence => {
-                ast::Sequence::parse_sequence_constructor_item(attributes)
-            }
-            SequenceConstructorName::SourceDocument => {
+            Self::Sequence => ast::Sequence::parse_sequence_constructor_item(attributes),
+            Self::SourceDocument => {
                 ast::SourceDocument::parse_sequence_constructor_item(attributes)
             }
-            SequenceConstructorName::Text => ast::Text::parse_sequence_constructor_item(attributes),
-            SequenceConstructorName::ValueOf => {
-                ast::ValueOf::parse_sequence_constructor_item(attributes)
-            }
-            SequenceConstructorName::Variable => {
-                ast::Variable::parse_sequence_constructor_item(attributes)
-            }
-            SequenceConstructorName::WherePopulated => {
+            Self::Text => ast::Text::parse_sequence_constructor_item(attributes),
+            Self::ValueOf => ast::ValueOf::parse_sequence_constructor_item(attributes),
+            Self::Variable => ast::Variable::parse_sequence_constructor_item(attributes),
+            Self::WherePopulated => {
                 ast::WherePopulated::parse_sequence_constructor_item(attributes)
             }
 
@@ -125,7 +71,7 @@ impl SequenceConstructorName {
         let mut sequence_constructor_names = BTreeMap::new();
         for variant_name in Self::VARIANTS {
             let name = xot.add_name_ns(variant_name, xsl_ns);
-            let constructor = SequenceConstructorName::from_str(variant_name).unwrap();
+            let constructor = Self::from_str(variant_name).unwrap();
             sequence_constructor_names.insert(name, constructor);
         }
         sequence_constructor_names
@@ -135,8 +81,8 @@ impl SequenceConstructorName {
 impl DeclarationName {
     pub(crate) fn parse(&self, attributes: &Attributes) -> Result<ast::Declaration, ElementError> {
         match self {
-            DeclarationName::Accumulator => ast::Accumulator::parse_declaration(attributes),
-            DeclarationName::Template => ast::Template::parse_declaration(attributes),
+            Self::Accumulator => ast::Accumulator::parse_declaration(attributes),
+            Self::Template => ast::Template::parse_declaration(attributes),
             _ => {
                 unimplemented!()
             }
@@ -147,7 +93,7 @@ impl DeclarationName {
         let mut declaration_names = BTreeMap::new();
         for variant_name in Self::VARIANTS {
             let name = xot.add_name_ns(variant_name, xsl_ns);
-            let constructor = DeclarationName::from_str(variant_name).unwrap();
+            let constructor = Self::from_str(variant_name).unwrap();
             declaration_names.insert(name, constructor);
         }
         declaration_names
