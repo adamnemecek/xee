@@ -4,9 +4,7 @@ struct Transformer<S, T, E, F>
 where
     F: FnMut(&S) -> Result<T, E>,
 {
-    _s: std::marker::PhantomData<S>,
-    _t: std::marker::PhantomData<T>,
-    _e: std::marker::PhantomData<E>,
+    _ph: std::marker::PhantomData<(S, T, E)>,
     transform: F,
 }
 
@@ -16,9 +14,7 @@ where
 {
     fn new(transform: F) -> Self {
         Self {
-            _s: std::marker::PhantomData,
-            _t: std::marker::PhantomData,
-            _e: std::marker::PhantomData,
+            _ph: std::marker::PhantomData,
             transform,
         }
     }

@@ -59,8 +59,7 @@ pub trait Query<V> {
         MapQuery {
             query: self,
             f,
-            v: std::marker::PhantomData,
-            t: std::marker::PhantomData,
+            ph: std::marker::PhantomData,
         }
     }
 
@@ -508,8 +507,7 @@ where
 {
     query: Q,
     f: F,
-    v: std::marker::PhantomData<V>,
-    t: std::marker::PhantomData<T>,
+    ph: std::marker::PhantomData<(V, T)>,
 }
 
 impl<V, T, Q, F> MapQuery<V, T, Q, F>

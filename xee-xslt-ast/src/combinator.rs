@@ -39,8 +39,7 @@ pub(crate) trait NodeParser<V> {
         MapParser {
             parser: self,
             map_func,
-            v: std::marker::PhantomData,
-            o: std::marker::PhantomData,
+            ph: std::marker::PhantomData,
         }
     }
 
@@ -106,8 +105,7 @@ pub(crate) trait NodeParser<V> {
         CombinedParser {
             first: self,
             second: other,
-            ta: std::marker::PhantomData,
-            tb: std::marker::PhantomData,
+            ph: std::marker::PhantomData,
         }
     }
 
@@ -118,8 +116,7 @@ pub(crate) trait NodeParser<V> {
         IgnoreRightCombinedParser {
             first: self,
             second: other,
-            ta: std::marker::PhantomData,
-            tb: std::marker::PhantomData,
+            ph: std::marker::PhantomData,
         }
     }
 
@@ -213,8 +210,7 @@ where
 {
     parser: P,
     map_func: M,
-    v: std::marker::PhantomData<V>,
-    o: std::marker::PhantomData<O>,
+    ph: std::marker::PhantomData<(V, O)>,
 }
 
 impl<V, O, P, M> NodeParser<O> for MapParser<V, O, P, M>
@@ -389,8 +385,7 @@ impl NodeParser<()> for EndParser {
 pub(crate) struct CombinedParser<VA, VB, PA: NodeParser<VA>, PB: NodeParser<VB>> {
     first: PA,
     second: PB,
-    ta: std::marker::PhantomData<VA>,
-    tb: std::marker::PhantomData<VB>,
+    ph: std::marker::PhantomData<(VA, VB)>,
 }
 
 impl<VA, VB, PA: NodeParser<VA>, PB: NodeParser<VB>> NodeParser<(VA, VB)>
@@ -411,8 +406,7 @@ impl<VA, VB, PA: NodeParser<VA>, PB: NodeParser<VB>> NodeParser<(VA, VB)>
 pub(crate) struct IgnoreRightCombinedParser<VA, VB, PA: NodeParser<VA>, PB: NodeParser<VB>> {
     first: PA,
     second: PB,
-    ta: std::marker::PhantomData<VA>,
-    tb: std::marker::PhantomData<VB>,
+    ph: std::marker::PhantomData<(VA, VB)>,
 }
 
 impl<VA, VB, PA: NodeParser<VA>, PB: NodeParser<VB>> NodeParser<VA>
