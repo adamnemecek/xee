@@ -44,23 +44,19 @@ pub struct State<'a> {
     pub(crate) xot: &'a mut Xot,
 }
 
-#[derive(Debug)]
+#[derive(Debug, Default)]
 struct ItemBuildStackEntry {
     build_stack: Vec<sequence::Item>,
 }
 
-#[derive(Debug)]
+#[derive(Debug, Default)]
 struct BuildStackEntry {
     item: ItemBuildStackEntry,
 }
 
 impl BuildStackEntry {
     fn new() -> Self {
-        Self {
-            item: ItemBuildStackEntry {
-                build_stack: vec![],
-            },
-        }
+        Self::default()
     }
 
     fn push(&mut self, item: sequence::Item) {

@@ -9,7 +9,7 @@ use super::{
     decimal_format::DecimalFormat,
 };
 
-#[derive(Debug, Clone, PartialEq, Eq)]
+#[derive(Debug, Clone, PartialEq, Eq, Default)]
 pub(crate) struct XPathEnvironmentSpec {
     environment_spec: EnvironmentSpec,
 
@@ -44,13 +44,7 @@ pub(crate) struct StaticBaseUri {
 
 impl XPathEnvironmentSpec {
     pub(crate) fn empty() -> Self {
-        Self {
-            environment_spec: EnvironmentSpec::empty(),
-            decimal_formats: vec![],
-            namespaces: vec![],
-            context_items: vec![],
-            static_base_uris: vec![],
-        }
+        Self::default()
     }
 
     pub(crate) fn namespace_pairs(&self) -> Vec<(&str, &str)> {
