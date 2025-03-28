@@ -155,7 +155,7 @@ impl Map {
 
     pub(crate) fn deep_equal(
         &self,
-        other: &Map,
+        other: &Self,
         collation: &string::Collation,
         default_offset: chrono::FixedOffset,
         xot: &Xot,

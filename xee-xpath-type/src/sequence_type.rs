@@ -10,7 +10,7 @@ pub trait TypeInfo {
 
 impl TypeInfo for ast::SequenceType {
     // https://www.w3.org/TR/xpath-31/#id-seqtype-subtype
-    fn subtype(&self, other: &ast::SequenceType) -> bool {
+    fn subtype(&self, other: &Self) -> bool {
         match (self, other) {
             (Self::Empty, Self::Empty) => true,
             (Self::Empty, Self::Item(ast::Item { occurrence, .. })) => match occurrence {
@@ -63,7 +63,7 @@ impl TypeInfo for ast::SequenceType {
 
 impl TypeInfo for ast::ItemType {
     // https://www.w3.org/TR/xpath-31/#id-itemtype-subtype
-    fn subtype(&self, other: &ast::ItemType) -> bool {
+    fn subtype(&self, other: &Self) -> bool {
         match (self, other) {
             // 1 Ai and Bi are AtomicOrUnionTypes, and derives-from(Ai, Bi)
             // returns true.
@@ -280,13 +280,13 @@ fn array_function_test() -> ast::TypedFunctionTest {
 }
 
 impl TypeInfo for ast::DocumentTest {
-    fn subtype(&self, other: &ast::DocumentTest) -> bool {
+    fn subtype(&self, other: &Self) -> bool {
         match (self, other) {
             // duplicate of 13 Bi is either element() or element(*), and Ai is an ElementTest.
-            (ast::DocumentTest::Element(..), ast::DocumentTest::Element(None)) => true,
+            (Self::Element(..), Self::Element(None)) => true,
             (
-                ast::DocumentTest::Element(Some(a_element_or_attribute_test)),
-                ast::DocumentTest::Element(Some(b_element_or_attribute_test)),
+                Self::Element(Some(a_element_or_attribute_test)),
+                Self::Element(Some(b_element_or_attribute_test)),
             ) => a_element_or_attribute_test.subtype(b_element_or_attribute_test),
             // TODO: schema element test
             _ => false,
@@ -295,7 +295,7 @@ impl TypeInfo for ast::DocumentTest {
 }
 
 impl TypeInfo for ast::ElementOrAttributeTest {
-    fn subtype(&self, other: &ast::ElementOrAttributeTest) -> bool {
+    fn subtype(&self, other: &Self) -> bool {
         match (self, other) {
             // 14 Bi is either element(Bn) or element(Bn, xs:anyType?), the
             // expanded QName of An equals the expanded QName of Bn, and Ai
@@ -404,7 +404,7 @@ impl TypeInfo for ast::ElementOrAttributeTest {
 }
 
 impl TypeInfo for ast::TypedFunctionTest {
-    fn subtype(&self, other: &ast::TypedFunctionTest) -> bool {
+    fn subtype(&self, other: &Self) -> bool {
         // 26 Bi is function(Ba_1, Ba_2, ... Ba_N) as Br, Ai is function(Aa_1,
         // Aa_2, ... Aa_M) as Ar, where N (arity of Bi) equals M (arity of Ai);
         // subtype(Ar, Br); and for values of I between 1 and N, subtype(Ba_I,
@@ -434,13 +434,13 @@ impl TypeInfo for ast::TypedFunctionTest {
 }
 
 impl TypeInfo for ast::TypedMapTest {
-    fn subtype(&self, other: &ast::TypedMapTest) -> bool {
+    fn subtype(&self, other: &Self) -> bool {
         self.key_type.derives_from(other.key_type) && self.value_type.subtype(&other.value_type)
     }
 }
 
 impl TypeInfo for ast::TypedArrayTest {
-    fn subtype(&self, other: &ast::TypedArrayTest) -> bool {
+    fn subtype(&self, other: &Self) -> bool {
         self.item_type.subtype(&other.item_type)
     }
 }

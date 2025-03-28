@@ -267,19 +267,19 @@ impl Atomic {
         }
     }
 
-    pub(crate) fn derives_from(&self, other: &Atomic) -> bool {
+    pub(crate) fn derives_from(&self, other: &Self) -> bool {
         self.schema_type().derives_from(other.schema_type())
     }
 
-    pub(crate) fn has_same_schema_type(&self, other: &Atomic) -> bool {
+    pub(crate) fn has_same_schema_type(&self, other: &Self) -> bool {
         self.schema_type() == other.schema_type()
     }
 
-    pub(crate) fn plus(self) -> error::Result<Atomic> {
+    pub(crate) fn plus(self) -> error::Result<Self> {
         op_unary::unary_plus(self)
     }
 
-    pub(crate) fn minus(self) -> error::Result<Atomic> {
+    pub(crate) fn minus(self) -> error::Result<Self> {
         op_unary::unary_minus(self)
     }
 
@@ -292,14 +292,14 @@ impl Atomic {
     ///
     /// Simple equal uses a comparison with the codepoint collation, and UTC as
     /// the timezone.
-    pub fn simple_equal(&self, other: &Atomic) -> bool {
+    pub fn simple_equal(&self, other: &Self) -> bool {
         self.equal(other, &Collation::CodePoint, chrono::offset::Utc.fix())
     }
 
     /// Compare atoms using XPath rules, with explicit collation and offset.
     pub fn equal(
         &self,
-        other: &Atomic,
+        other: &Self,
         collation: &Collation,
         default_offset: chrono::FixedOffset,
     ) -> bool {
