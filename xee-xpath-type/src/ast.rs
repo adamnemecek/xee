@@ -12,8 +12,8 @@ pub enum SequenceType {
 impl SequenceType {
     pub fn display_representation(&self) -> String {
         match self {
-            SequenceType::Empty => "empty-sequence()".to_string(),
-            SequenceType::Item(item) => item.display_representation(),
+            Self::Empty => "empty-sequence()".to_string(),
+            Self::Item(item) => item.display_representation(),
         }
     }
 }

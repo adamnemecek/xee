@@ -177,7 +177,7 @@ pub enum Collation {
 impl Collation {
     fn new(base_uri: Option<&IriAbsoluteStr>, uri: &IriReferenceStr) -> error::Result<Self> {
         let uri = if let Some(base_uri) = base_uri {
-             uri.resolve_against(base_uri).into()
+            uri.resolve_against(base_uri).into()
         } else {
             uri.to_iri().map_err(|_| error::Error::FOCH0002)?.to_owned()
         };

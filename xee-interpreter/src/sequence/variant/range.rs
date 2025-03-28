@@ -21,7 +21,7 @@ impl Range {
             return Err(error::Error::FOAR0002);
         }
 
-        Ok(Range {
+        Ok(Self {
             start: start.into(),
             end: end.into(),
         })
@@ -151,7 +151,7 @@ pub struct RangeIterator {
 
 impl RangeIterator {
     pub(crate) fn new(start: IBig, end: IBig) -> Self {
-        RangeIterator {
+        Self {
             start,
             end,
             index: 0.into(),

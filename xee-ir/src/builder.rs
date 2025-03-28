@@ -35,7 +35,7 @@ pub struct FunctionBuilder<'a> {
 
 impl<'a> FunctionBuilder<'a> {
     pub fn new(program: &'a mut interpreter::Program) -> Self {
-        FunctionBuilder {
+        Self {
             program,
             compiled: Vec::new(),
             spans: Vec::new(),

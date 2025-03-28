@@ -367,7 +367,7 @@ impl GDay {
 
 impl From<GDay> for Atomic {
     fn from(g_day: GDay) -> Self {
-        Atomic::GDay(g_day.into())
+        Self::GDay(g_day.into())
     }
 }
 
@@ -389,13 +389,13 @@ impl GMonth {
 
 impl From<GMonth> for Atomic {
     fn from(g_month: GMonth) -> Self {
-        Atomic::GMonth(g_month.into())
+        Self::GMonth(g_month.into())
     }
 }
 
 impl From<chrono::Duration> for Atomic {
     fn from(duration: chrono::Duration) -> Self {
-        Atomic::DayTimeDuration(duration.into())
+        Self::DayTimeDuration(duration.into())
     }
 }
 

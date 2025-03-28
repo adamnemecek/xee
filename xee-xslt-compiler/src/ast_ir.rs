@@ -33,7 +33,7 @@ pub(crate) fn parse(
 
 impl<'a> IrConverter<'a> {
     fn new(static_context: &'a StaticContext) -> Self {
-        IrConverter {
+        Self {
             variables: Variables::new(),
             static_context,
         }

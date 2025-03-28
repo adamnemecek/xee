@@ -808,9 +808,7 @@ impl Loadable for TestCaseResult {
 
         let assert_permutation_query = queries.one("string()", |_, item| {
             let xpath: String = item.to_atomic()?.try_into()?;
-            Ok(Self::AssertPermutation(AssertPermutation::new(
-                xpath,
-            )))
+            Ok(Self::AssertPermutation(AssertPermutation::new(xpath)))
         })?;
 
         let any_all_recurse = queries.many_recurse("*")?;

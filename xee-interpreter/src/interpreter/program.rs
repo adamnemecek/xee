@@ -18,7 +18,7 @@ pub struct Program {
 
 impl Program {
     pub fn new(static_context: context::StaticContext, span: Span) -> Self {
-        Program {
+        Self {
             span,
             functions: Vec::new(),
             declarations: Declarations::new(),
@@ -102,11 +102,8 @@ pub struct FunctionInfo<'a, 'b> {
 }
 
 impl<'a, 'b> FunctionInfo<'a, 'b> {
-    pub(crate) fn new(
-        function: &'b function::Function,
-        program: &'a Program,
-    ) -> FunctionInfo<'a, 'b> {
-        FunctionInfo { function, program }
+    pub(crate) fn new(function: &'b function::Function, program: &'a Program) -> Self {
+        Self { function, program }
     }
 
     /// Return the arity of the function.

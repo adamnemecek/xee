@@ -329,8 +329,7 @@ impl Item {
                     Err(error::Error::XPTY0004)
                 }
             }
-            Self::Atomic(_) |
-            Self::Function(_) => Err(error::Error::XPTY0004),
+            Self::Atomic(_) | Self::Function(_) => Err(error::Error::XPTY0004),
         }
     }
 

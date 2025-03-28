@@ -49,7 +49,7 @@ impl From<sequence::Item> for ContextInfo {
 
 impl<'a> Interpreter<'a> {
     pub fn new(runnable: &'a Runnable<'a>, xot: &'a mut Xot) -> Self {
-        Interpreter {
+        Self {
             runnable,
             state: State::new(xot),
         }
