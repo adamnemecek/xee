@@ -12,22 +12,20 @@ impl TypeInfo for ast::SequenceType {
     // https://www.w3.org/TR/xpath-31/#id-seqtype-subtype
     fn subtype(&self, other: &ast::SequenceType) -> bool {
         match (self, other) {
-            (ast::SequenceType::Empty, ast::SequenceType::Empty) => true,
-            (ast::SequenceType::Empty, ast::SequenceType::Item(ast::Item { occurrence, .. })) => {
-                match occurrence {
-                    ast::Occurrence::Option => true,
-                    ast::Occurrence::Many => true,
-                    ast::Occurrence::One => false,
-                    ast::Occurrence::NonEmpty => false,
-                }
-            }
-            (ast::SequenceType::Item(_), ast::SequenceType::Empty) => false,
+            (Self::Empty, Self::Empty) => true,
+            (Self::Empty, Self::Item(ast::Item { occurrence, .. })) => match occurrence {
+                ast::Occurrence::Option => true,
+                ast::Occurrence::Many => true,
+                ast::Occurrence::One => false,
+                ast::Occurrence::NonEmpty => false,
+            },
+            (Self::Item(_), Self::Empty) => false,
             (
-                ast::SequenceType::Item(ast::Item {
+                Self::Item(ast::Item {
                     item_type: a_item_type,
                     occurrence: a_occurrence,
                 }),
-                ast::SequenceType::Item(ast::Item {
+                Self::Item(ast::Item {
                     item_type: b_item_type,
                     occurrence: b_occurrence,
                 }),
